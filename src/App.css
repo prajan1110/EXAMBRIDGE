@@ -1,0 +1,685 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* ====== Enhanced Accessibility Styles ====== */
+
+/* Text highlighter removed */
+
+/* Word Spacing - Improved Implementation */
+:root {
+  --word-spacing: 0px;
+}
+
+/* Apply word spacing globally */
+body {
+  word-spacing: var(--word-spacing);
+}
+
+/* Apply word spacing specifically to quiz elements with higher specificity */
+.quiz-content p,
+.quiz-content li,
+.quiz-question,
+.quiz-option,
+.option-letter,
+[data-option],
+.quiz-container * {
+  word-spacing: var(--word-spacing) !important;
+  transition: word-spacing 0.3s ease;
+  letter-spacing: calc(var(--word-spacing) * 0.3);
+}
+
+/* Color Themes for Color Blindness */
+.theme-protanopia {
+  --color-primary: #0072B2;
+  --color-secondary: #009E73;
+  --color-accent: #F0E442;
+  --color-danger: #D55E00;
+  --color-warning: #CC79A7;
+  --theme-label: "Protanopia Mode";
+  
+  /* Visual indicator for protanopia mode */
+  --theme-border: 5px solid #0072B2;
+  
+  /* Patterns for options */
+  --pattern-a: repeating-linear-gradient(45deg, transparent, transparent 5px, #0072B2 5px, #0072B2 10px);
+  --pattern-b: repeating-linear-gradient(-45deg, transparent, transparent 5px, #009E73 5px, #009E73 10px);
+  --pattern-c: repeating-linear-gradient(0deg, transparent, transparent 5px, #F0E442 5px, #F0E442 10px);
+  --pattern-d: repeating-linear-gradient(90deg, transparent, transparent 5px, #D55E00 5px, #D55E00 10px);
+}
+
+.theme-deuteranopia {
+  --color-primary: #0072B2;
+  --color-secondary: #E69F00;
+  --color-accent: #F0E442;
+  --color-danger: #D55E00;
+  --color-warning: #56B4E9;
+  --theme-label: "Deuteranopia Mode";
+  
+  /* Visual indicator for deuteranopia mode */
+  --theme-border: 5px solid #0072B2;
+  
+  /* Patterns for options */
+  --pattern-a: repeating-linear-gradient(45deg, transparent, transparent 5px, #0072B2 5px, #0072B2 10px);
+  --pattern-b: repeating-linear-gradient(-45deg, transparent, transparent 5px, #E69F00 5px, #E69F00 10px);
+  --pattern-c: repeating-linear-gradient(0deg, transparent, transparent 5px, #F0E442 5px, #F0E442 10px);
+  --pattern-d: repeating-linear-gradient(90deg, transparent, transparent 5px, #D55E00 5px, #D55E00 10px);
+}
+
+.theme-tritanopia {
+  --color-primary: #0072B2;
+  --color-secondary: #009E73;
+  --color-accent: #F0E442;
+  --color-danger: #D55E00;
+  --color-warning: #56B4E9;
+  --theme-label: "Tritanopia Mode";
+  
+  /* Visual indicator for tritanopia mode */
+  --theme-border: 5px solid #0072B2;
+  
+  /* Patterns for options */
+  --pattern-a: repeating-linear-gradient(45deg, transparent, transparent 5px, #0072B2 5px, #0072B2 10px);
+  --pattern-b: repeating-linear-gradient(-45deg, transparent, transparent 5px, #009E73 5px, #009E73 10px);
+  --pattern-c: repeating-linear-gradient(0deg, transparent, transparent 5px, #F0E442 5px, #F0E442 10px);
+  --pattern-d: repeating-linear-gradient(90deg, transparent, transparent 5px, #D55E00 5px, #D55E00 10px);
+}
+
+.theme-monochrome {
+  --color-primary: #000000;
+  --color-secondary: #666666;
+  --color-accent: #CCCCCC;
+  --color-danger: #333333;
+  --color-warning: #999999;
+  --theme-label: "Monochrome Mode";
+  
+  /* Visual indicator for monochrome mode */
+  --theme-border: 5px solid #000000;
+  
+  /* Patterns for options */
+  --pattern-a: repeating-linear-gradient(45deg, transparent, transparent 5px, #000000 5px, #000000 10px);
+  --pattern-b: repeating-linear-gradient(-45deg, transparent, transparent 5px, #333333 5px, #333333 10px);
+  --pattern-c: repeating-linear-gradient(0deg, transparent, transparent 5px, #666666 5px, #666666 10px);
+  --pattern-d: repeating-linear-gradient(90deg, transparent, transparent 5px, #999999 5px, #999999 10px);
+}
+
+/* Apply patterns for color blindness */
+.theme-protanopia .quiz-option:before,
+.theme-deuteranopia .quiz-option:before,
+.theme-tritanopia .quiz-option:before,
+.theme-monochrome .quiz-option:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  border: 1px solid currentColor;
+  vertical-align: middle;
+}
+
+/* Different patterns for different options */
+.theme-protanopia .quiz-option[data-option="A"]:before,
+.theme-deuteranopia .quiz-option[data-option="A"]:before,
+.theme-tritanopia .quiz-option[data-option="A"]:before,
+.theme-monochrome .quiz-option[data-option="A"]:before {
+  background-image: var(--pattern-a);
+}
+
+.theme-protanopia .quiz-option[data-option="B"]:before,
+.theme-deuteranopia .quiz-option[data-option="B"]:before,
+.theme-tritanopia .quiz-option[data-option="B"]:before,
+.theme-monochrome .quiz-option[data-option="B"]:before {
+  background-image: var(--pattern-b);
+}
+
+.theme-protanopia .quiz-option[data-option="C"]:before,
+.theme-deuteranopia .quiz-option[data-option="C"]:before,
+.theme-tritanopia .quiz-option[data-option="C"]:before,
+.theme-monochrome .quiz-option[data-option="C"]:before {
+  background-image: var(--pattern-c);
+}
+
+.theme-protanopia .quiz-option[data-option="D"]:before,
+.theme-deuteranopia .quiz-option[data-option="D"]:before,
+.theme-tritanopia .quiz-option[data-option="D"]:before,
+.theme-monochrome .quiz-option[data-option="D"]:before {
+  background-image: var(--pattern-d);
+}
+
+/* Add visible theme indicator banner to show which mode is active */
+body.theme-protanopia::after,
+body.theme-deuteranopia::after,
+body.theme-tritanopia::after,
+body.theme-monochrome::after {
+  content: var(--theme-label);
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 9999;
+  pointer-events: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Style quiz options differently in color blind modes for better clarity */
+.theme-protanopia .quiz-option,
+.theme-deuteranopia .quiz-option,
+.theme-tritanopia .quiz-option,
+.theme-monochrome .quiz-option {
+  border-left: var(--theme-border);
+  padding-left: 15px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Line Focus Mode - Enhanced Implementation */
+.line-focus-mode {
+  --line-focus-color: rgba(255, 255, 0, 0.2);
+  --line-hover-color: rgba(255, 200, 0, 0.3);
+  --line-height: 2;
+  --line-spacing: 5px;
+  line-height: var(--line-height);
+}
+
+.dark .line-focus-mode {
+  --line-focus-color: rgba(255, 255, 128, 0.15);
+  --line-hover-color: rgba(255, 200, 0, 0.25);
+}
+
+.line-focus-mode p,
+.line-focus-mode li,
+.line-focus-mode .quiz-content p,
+.line-focus-mode .quiz-question,
+.line-focus-mode .quiz-option {
+  position: relative;
+  padding: 6px 8px;
+  margin: var(--line-spacing) 0;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  border-left: 0px solid transparent;
+}
+
+/* Apply focus effect on hover */
+.line-focus-mode p:hover,
+.line-focus-mode li:hover,
+.line-focus-mode .quiz-content p:hover,
+.line-focus-mode .quiz-question:hover,
+.line-focus-mode .quiz-option:hover {
+  background-color: var(--line-hover-color);
+  box-shadow: 0 0 0 2px var(--line-focus-color);
+  outline: none;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 16px; 
+  transform: translateX(4px);
+}
+
+/* Line focus indicator with improved animation */
+.line-focus-mode p:hover::before,
+.line-focus-mode li:hover::before,
+.line-focus-mode .quiz-content p:hover::before,
+.line-focus-mode .quiz-question:hover::before,
+.line-focus-mode .quiz-option:hover::before {
+  content: '▶';
+  position: absolute;
+  left: -24px;
+  color: var(--color-primary);
+  animation: indicator-pulse 1.5s ease-in-out infinite;
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+@keyframes indicator-pulse {
+  0% { transform: scale(1) translateX(0); }
+  50% { transform: scale(1.2) translateX(3px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+/* Line focus highlight bar */
+.line-focus-mode p::after,
+.line-focus-mode li::after,
+.line-focus-mode .quiz-content p::after,
+.line-focus-mode .quiz-question::after,
+.line-focus-mode .quiz-option::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-primary);
+  transition: right 0.3s ease;
+}
+
+.line-focus-mode p:hover::after,
+.line-focus-mode li:hover::after,
+.line-focus-mode .quiz-content p:hover::after,
+.line-focus-mode .quiz-question:hover::after,
+.line-focus-mode .quiz-option:hover::after {
+  right: 0;
+}
+
+/* Dynamic focus tracker */
+#focus-tracker {
+  position: absolute;
+  left: 0;
+  height: 30px;
+  background-color: var(--line-focus-color);
+  pointer-events: none;
+  border-radius: 4px;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced line focus overlay with smoother gradient */
+#line-focus-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.05) 15%, 
+    rgba(0,0,0,0) 25%,
+    rgba(0,0,0,0) 75%,
+    rgba(0,0,0,0.05) 85%,
+    rgba(0,0,0,0.25) 100%
+  );
+  backdrop-filter: blur(1px);
+}
+
+.dark #line-focus-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0.1) 15%, 
+    rgba(0,0,0,0) 25%,
+    rgba(0,0,0,0) 75%,
+    rgba(0,0,0,0.1) 85%,
+    rgba(0,0,0,0.5) 100%
+  );
+}
+
+/* Screen Magnifier - Simplified Implementation */
+.screen-magnifier-enabled {
+  --magnifier-size: 200px;
+  --magnifier-zoom: 2;
+  cursor: crosshair;
+}
+
+#screen-magnifier {
+  position: fixed;
+  width: var(--magnifier-size);
+  height: var(--magnifier-size);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3), 
+              0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-color: white;
+}
+
+.dark #screen-magnifier {
+  background-color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.screen-magnifier-enabled #screen-magnifier {
+  display: block;
+}
+
+.screen-magnifier-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen-magnifier-content > * {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Simple magnifier controls */
+#magnifier-controls {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+#magnifier-controls button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #333;
+  color: #333;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark #magnifier-controls button {
+  background: #333;
+  border-color: white;
+  color: white;
+}
+
+/* Voice commands removed */
+
+/* Keyboard Navigation Focus Styles */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.quiz-option:focus-visible {
+  outline: 3px solid var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Line focus highlight style */
+.focus-highlight {
+  background-color: var(--line-hover-color) !important;
+  box-shadow: 0 0 0 2px var(--line-focus-color) !important;
+  border-left: 4px solid var(--color-primary) !important;
+  padding-left: 16px !important;
+  z-index: 1;
+  position: relative;
+}
+
+/* === Quiz Element Styles === */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quiz-timer {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.quiz-progress {
+  margin-bottom: 1rem;
+}
+
+.quiz-question {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quiz-option {
+  padding: 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.quiz-option:hover {
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+.quiz-option[aria-selected="true"] {
+  border-color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Ensure buttons have visible focus states for keyboard navigation */
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ====== Enhanced Animation Styles ====== */
+
+/* Utility Animation Classes */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shadow glow effect */
+.shadow-glow {
+  box-shadow: 0 0 25px rgba(var(--color-primary-rgb, 59, 130, 246), 0.15), 
+              0 0 15px rgba(var(--color-accent-rgb, 245, 158, 11), 0.1);
+}
+
+/* Float animation for elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(8px) translateX(3px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s forwards ease-out;
+}
+
+/* Scale in animation */
+@keyframes scale-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+/* Slide in animation */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s forwards ease-out;
+}
+
+/* === Exam Lockdown Mode Styles === */
+/* === Exam Lockdown Mode Styles === */
+body.exam-lockdown-mode {
+  padding-top: 0 !important; /* Remove any top padding that might be added for the header */
+  background-color: hsl(var(--background)) !important; /* Ensure consistent background */
+  position: relative;
+}
+
+body.exam-lockdown-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, hsl(var(--warning)), hsl(var(--destructive)));
+  z-index: 9999;
+}
+
+body.exam-lockdown-mode header {
+  display: none !important; /* Hide the header when in exam mode */
+}
+
+body.exam-lockdown-mode .exam-content {
+  max-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+body.exam-lockdown-mode .exam-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: hsl(var(--background));
+  border-top: 1px solid hsl(var(--border));
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.exam-lockdown-mode .exam-warning {
+  position: fixed;
+  top: 8px; /* Position below the warning bar */
+  left: 0;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: hsl(var(--warning) / 0.9);
+  color: hsl(var(--warning-foreground));
+  text-align: center;
+  font-weight: 600;
+  z-index: 1000;
+  animation: pulse-warning 2s infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    background-color: hsl(var(--warning) / 0.9);
+  }
+  50% {
+    background-color: hsl(var(--warning) / 0.7);
+  }
+}
+
+/* Add a visible indication in fullscreen mode */
+body.exam-lockdown-mode::after {
+  content: 'SECURE EXAM MODE ACTIVE';
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: hsl(var(--primary) / 0.2);
+  border: 1px solid hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+  font-size: 10px;
+  color: hsl(var(--primary));
+  z-index: 9999;
+  pointer-events: none;
+}

@@ -1,0 +1,15 @@
+[build]
+  # Directory to publish (relative to root of your repo)
+  publish = "dist"
+  # Default build command
+  command = "npm run build"
+
+[[redirects]]
+  # SPA redirect - This ensures that your React Router routes work correctly
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  # Set Node.js version
+  NODE_VERSION = "18"

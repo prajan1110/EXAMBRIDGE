@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate Upload Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .form-container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .success {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+    .error {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Certificate Upload Test</h1>
+  <p>Use this form to test uploading certificates to the server.</p>
+  
+  <div class="form-container">
+    <h2>Upload Form</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div>
+        <label for="certificate">Select certificate file:</label>
+        <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png,.txt" required>
+      </div>
+      <div style="margin-top: 10px;">
+        <button type="submit">Upload Certificate</button>
+      </div>
+    </form>
+  </div>
+  
+  <div id="resultContainer" class="result hidden">
+    <h3>Upload Result</h3>
+    <pre id="resultData"></pre>
+  </div>
+  
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const resultContainer = document.getElementById('resultContainer');
+      const resultData = document.getElementById('resultData');
+      resultContainer.classList.remove('success', 'error', 'hidden');
+      
+      try {
+        const formData = new FormData(this);
+        
+        // Use the test endpoint
+        const response = await fetch('http://localhost:3002/api/test-upload', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          resultContainer.classList.add('success');
+        } else {
+          resultContainer.classList.add('error');
+        }
+        
+        resultData.textContent = JSON.stringify(result, null, 2);
+      } catch (error) {
+        resultContainer.classList.add('error');
+        resultData.textContent = error.toString();
+      }
+    });
+  </script>
+</body>
+</html>

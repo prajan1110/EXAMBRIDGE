@@ -1,0 +1,20 @@
+
+        MEDICAL CERTIFICATE
+        
+        Date: 2025-10-10
+        
+        This is to certify that John Smith (Student ID: STU-12345) has been diagnosed with 
+        moderate Dyslexia, a specific learning disability that affects reading, writing, and spelling.
+        
+        The condition affects the student's ability to process written information
+        efficiently, particularly under timed conditions.
+        
+        Recommended accommodations:
+        - Extended time for examinations
+        - Text-to-speech software for reading exam materials
+        - Use of specialized fonts designed for dyslexic readers
+        
+        Dr. Robert Williams
+        Registered Neuropsychologist (License #NP-78901)
+        University Medical Center
+      

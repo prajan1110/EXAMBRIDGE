@@ -1,0 +1,18 @@
+
+        MEDICAL CERTIFICATE
+        
+        Date: 2025-10-10
+        
+        This document certifies that Emma Johnson (ID: STU-67890) has been diagnosed with
+        severe visual impairment with reduced visual acuity.
+        
+        The condition requires the following accommodations during exams:
+        - High contrast text and images
+        - Ability to adjust font size
+        - Additional time
+        - Text-to-speech functionality
+        
+        Dr. Sarah Chen
+        Ophthalmologist (Reg #OP-12345)
+        Vision Care Center
+      

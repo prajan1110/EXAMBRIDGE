@@ -1,0 +1,96 @@
+import React from 'react';
+import { AlertTriangle } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogFooter,
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+
+interface ExamSecurityNoticeProps {
+  open: boolean;
+  onClose: (value: boolean) => void;
+  onContinue: () => void;
+}
+
+export const ExamSecurityNotice = ({
+  open,
+  onClose,
+  onContinue,
+}: ExamSecurityNoticeProps) => {
+  const [isAcknowledged, setIsAcknowledged] = React.useState(false);
+
+  const handleAcknowledge = (checked: boolean) => {
+    setIsAcknowledged(checked);
+  };
+
+  return (
+    <AlertDialog open={open} onOpenChange={onClose}>
+      <AlertDialogContent className="max-w-xl backdrop-blur-sm bg-background/95 border-warning/20">
+        <AlertDialogHeader className="space-y-3">
+          <AlertDialogTitle className="text-xl text-center">
+            Exam Security Notice
+          </AlertDialogTitle>
+        </AlertDialogHeader>
+
+        <div className="p-4 space-y-4">
+          <div className="bg-card border border-border rounded-lg p-4 text-sm">
+            <p className="font-medium mb-3">
+              The following security measures will be enforced:
+            </p>
+            <ul className="space-y-2 text-muted-foreground list-disc pl-5">
+              <li>The exam will run in fullscreen mode</li>
+              <li>Exiting fullscreen will auto-submit your exam</li>
+              <li>Switching tabs/windows will auto-submit your exam</li>
+              <li>Keyboard shortcuts and right-click are disabled</li>
+            </ul>
+          </div>
+
+          <div className="flex items-center space-x-2 justify-center p-4 border border-border rounded-lg">
+            <Checkbox 
+              id="acknowledgment"
+              checked={isAcknowledged}
+              onCheckedChange={handleAcknowledge}
+            />
+            <label htmlFor="acknowledgment" className="text-sm font-medium cursor-pointer">
+              I understand and agree to follow all exam rules
+            </label>
+          </div>
+        </div>
+
+        <AlertDialogFooter className="sm:justify-between space-y-4 sm:space-y-0">
+          <div>
+            {isAcknowledged ? (
+              <AlertTriangle className="h-5 w-5 text-primary inline mr-2" />
+            ) : (
+              <AlertTriangle className="h-5 w-5 text-warning inline mr-2" />
+            )}
+            <span className={`text-sm font-medium ${isAcknowledged ? 'text-primary' : 'text-warning'}`}>
+              {isAcknowledged
+                ? 'Rules acknowledged'
+                : 'Please acknowledge exam rules to continue'}
+            </span>
+          </div>
+
+          <div className="space-x-2">
+            <Button
+              variant="outline"
+              onClick={() => onClose(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={onContinue}
+              disabled={!isAcknowledged}
+            >
+              Start Exam
+            </Button>
+          </div>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};

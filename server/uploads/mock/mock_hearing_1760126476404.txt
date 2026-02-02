@@ -1,0 +1,19 @@
+
+        DISABILITY VERIFICATION
+        
+        Date: 2025-10-10
+        Patient: Michael Brown (Student #: STU-45678)
+        Diagnosis: mild hearing loss
+        
+        This student has a hearing impairment that impacts their
+        ability to process auditory information. For examination purposes, the following
+        accommodations are necessary:
+        
+        - Visual alternatives for any audio content
+        - Captioning for video materials
+        - Written instructions for all tasks
+        - Additional time for language-based assessments
+        
+        Dr. James Wilson
+        Audiologist (License #AUD-90123)
+      
